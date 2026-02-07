@@ -6,28 +6,35 @@ body {
 }
 
 header {
-    background: #ffffff;
-    color: #333;
+    background: #b22222; /* alert red */
+    color: #fff;
     padding: 15px 20px;
     border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    letter-spacing: 1px;
 }
 
 header a {
-    background: #e0e0e0;
-    color: #333;
+    background: #fff;
+    color: #b22222;
     padding: 8px 12px;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+    border: 1px solid #b22222;
 }
 
 header a:hover {
-    background: #333;
+    background: #8b1a1a;
     color: #fff;
 }
 
@@ -47,11 +54,8 @@ th, td {
 
 th {
     background: #f0f0f0;
+    text-transform: uppercase;
 }
-
-.available { background: #e6f7e6; }
-.deployed { background: #fffbe6; }
-.restock { background: #ffe6e6; } 
 
 .is-invalid {
     border: 2px solid #ff4d4f; 
@@ -71,3 +75,28 @@ input, textarea, select {
     background: #fff;
 }
 
+button, input[type="submit"] {
+    background: #b22222;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #8b1a1a;
+}
+
+/* Earthquake alert banner */
+.alert-banner {
+    background: #ffcc00;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
