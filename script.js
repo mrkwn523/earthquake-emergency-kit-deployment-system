@@ -1,37 +1,29 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     // Form validation
-    document.querySelectorAll("form").forEach(form => {
-        form.addEventListener("submit", e => {
-            let valid = true;
-            form.querySelectorAll("[required]").forEach(input => {
-                input.classList.remove("is-invalid");
-                const old = input.parentNode.querySelector(".error-text");
-                if (old) old.remove();
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+        form.addEventListener("submit", function (event) {
+            let kitName = form.querySelector("[name='kit_name']");
+            let contents = form.querySelector("[name='contents']");
 
-                if (!input.value.trim()) {
-                    valid = false;
-                    input.classList.add("is-invalid");
-                    const err = document.createElement("small");
-                    err.className = "error-text";
-                    err.innerText = "This field is required";
-                    input.parentNode.appendChild(err);
-                }
-            });
-            if (!valid) e.preventDefault();
+            if (!kitName.value.trim()) {
+                alert("Kit Name is required.");
+                kitName.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            if (!contents.value.trim()) {
+                alert("Contents field cannot be empty.");
+                contents.focus();
+                event.preventDefault();
+                return false;
+            }
         });
     });
-
-    // Earthquake preparedness banner (on Add/Edit pages)
-    const formContainer = document.querySelector("form");
-    if (formContainer) {
-        const alertBanner = document.createElement("div");
-        alertBanner.className = "alert-banner";
-        alertBanner.textContent = "⚠️ Earthquake Preparedness Reminder: Ensure kits are complete and accessible!";
-        formContainer.parentNode.insertBefore(alertBanner, formContainer);
-    }
 });
 
 // Confirmation before delete
 function confirmDelete() {
-    return confirm("Delete this kit permanently?");
+    return confirm("Are you sure you want to delete this kit?");
 }
