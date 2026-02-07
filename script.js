@@ -8,11 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             form.querySelectorAll("[required]").forEach(input => {
 
-                removeError(input);
+                input.classList.remove("is-invalid");
+                const old = input.parentNode.querySelector(".error-text");
+                if (old) old.remove();
 
                 if (!input.value.trim()) {
-                    showError(input, "This field is required");
                     valid = false;
+
+                    input.classList.add("is-invalid");
+
+                    const err = document.createElement("small");
+                    err.className = "error-text";
+                    err.innerText = "This field is required";
+
+                    input.parentNode.appendChild(err);
                 }
 
             });
@@ -25,10 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("table tbody tr").forEach(row => {
 
-        const statusCell = row.cells[4];
-        if (!statusCell) return;
-
-        const status = statusCell.textContent.trim().toLowerCase();
+        const status = row.cells[4]?.innerText.toLowerCase();
 
         if (status === "available") row.classList.add("available");
         if (status === "deployed") row.classList.add("deployed");
@@ -37,27 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
-
-function showError(input, message) {
-
-    input.classList.add("is-invalid");
-
-    const error = document.createElement("small");
-    error.className = "error-text";
-    error.innerText = message;
-
-    input.parentNode.appendChild(error);
-}
-
-function removeError(input) {
-
-    input.classList.remove("is-invalid");
-
-    const error = input.parentNode.querySelector(".error-text");
-    if (error) error.remove();
-}
-
 
 function confirmDelete() {
     return confirm("Delete this kit permanently?");
