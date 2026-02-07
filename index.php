@@ -7,8 +7,10 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <h1>Emergency Kits Dashboard</h1>
-    <a href="add.php">➕ Add New Kit</a>
+     <header>
+       <h1>Emergency Kits Dashboard</h1>
+       <a href="add.php">➕ Add New Kit</a>
+     </header>
     <table>
         <tr>
             <th>ID</th><th>Name</th><th>Contents</th><th>Location</th><th>Status</th><th>Actions</th>
