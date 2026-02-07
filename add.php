@@ -1,47 +1,98 @@
 <?php include("db_connect.php"); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Kit</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <title>Add New Kit</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding-top: 50px;
+        }
+        form {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        form h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #555;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Emergency Kits Dashboard</h1>
-    </header>
-    <h2>Add New Emergency Kit</h2>
-    <form method="POST">
-        Kit Name: <input type="text" name="kit_name" required><br>
-        Contents: <textarea name="contents" required></textarea><br>
-        Location: <input type="text" name="location"><br>
-        Status: 
-        <select name="status">
-            <option value="Available">Available</option>
-            <option value="Deployed">Deployed</option>
-            <option value="Needs Restock">Needs Restock</option>
-        </select><br>
-        <input type="submit" name="submit" value="Save">
-    </form>
 
-<?php
-if(isset($_POST['submit'])){
-    $kit_name = $_POST['kit_name'];
-    $contents = $_POST['contents'];
-    $location = $_POST['location'];
-    $status   = $_POST['status'];
+<form method="POST" action="add_process.php">
+    <h2>Add New Kit</h2>
 
-    $stmt = $conn->prepare("INSERT INTO kits (kit_name, contents, location, status) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $kit_name, $contents, $location, $status);
+    <label for="kit_name">Kit Name</label>
+    <input type="text" name="kit_name" id="kit_name" required>
 
-    if($stmt->execute()){
-        echo "New kit added successfully! <a href='index.php'>Back to Dashboard</a>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+    <label for="contents">Contents</label>
+    <textarea name="contents" id="contents" rows="3" required></textarea>
 
-    $stmt->close();
-}
-?>
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" required>
+
+    <label for="status">Status</label>
+    <select name="status" id="status" required>
+        <option value="Available">Available</option>
+        <option value="Deployed">Deployed</option>
+        <option value="Restock">Restock</option>
+    </select>
+
+    <button type="submit">Add Kit</button>
+    <a class="back-link" href="index.php">← Back to Dashboard</a>
+</form>
+
 </body>
+</html>
+body>
 </html>
