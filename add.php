@@ -21,21 +21,24 @@
         <input type="submit" name="submit" value="Save">
     </form>
 
-    <?php
-    if(isset($_POST['submit'])){
-        $kit_name = $_POST['kit_name'];
-        $contents = $_POST['contents'];
-        $location = $_POST['location'];
-        $status   = $_POST['status'];
+<?php
+if(isset($_POST['submit'])){
+    $kit_name = $_POST['kit_name'];
+    $contents = $_POST['contents'];
+    $location = $_POST['location'];
+    $status   = $_POST['status'];
 
-        $sql = "INSERT INTO kits (kit_name, contents, location, status) 
-                VALUES ('$kit_name','$contents','$location','$status')";
-        if($conn->query($sql) === TRUE){
-            echo "New kit added successfully! <a href='index.php'>Back to Dashboard</a>";
-        } else {
-            echo "Error: " . $conn->error;
-        }
+    $stmt = $conn->prepare("INSERT INTO kits (kit_name, contents, location, status) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $kit_name, $contents, $location, $status);
+
+    if($stmt->execute()){
+        echo "New kit added successfully! <a href='index.php'>Back to Dashboard</a>";
+    } else {
+        echo "Error: " . $stmt->error;
     }
-    ?>
+
+    $stmt->close();
+}
+?>
 </body>
 </html>
