@@ -7,6 +7,9 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
+    <header>
+        <h1>Emergency Kits Dashboard</h1>
+    </header>
 <?php
 $id = $_GET['id'];
 
