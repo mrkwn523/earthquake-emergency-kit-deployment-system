@@ -6,7 +6,6 @@
     <title>Add New Kit</title>
     <link rel="stylesheet" href="style.css">
     <style>
-
         body {
             display: flex;
             justify-content: center;
@@ -17,16 +16,16 @@
         }
         form {
             background: #fff;
-            padding: 25px 30px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             width: 400px;
         }
-        form h2 {
+        h2 {
+            text-align: center;
             margin-bottom: 20px;
             font-weight: 600;
             color: #333;
-            text-align: center;
         }
         label {
             display: block;
@@ -39,8 +38,17 @@
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            background: #fff;
             font-size: 14px;
+            background: #fff;
+        }
+        .error {
+            border-color: #ff4d4f;
+        }
+        .error-text {
+            color: #ff4d4f;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
         }
         button {
             width: 100%;
@@ -49,8 +57,8 @@
             color: #fff;
             border: none;
             border-radius: 5px;
-            font-weight: 600;
             cursor: pointer;
+            font-weight: 600;
             transition: 0.3s;
         }
         button:hover {
@@ -59,12 +67,13 @@
         .back-link {
             display: block;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
             color: #333;
             text-decoration: none;
-            font-size: 14px;
         }
-        .back-link:hover { text-decoration: underline; }
+        .back-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
