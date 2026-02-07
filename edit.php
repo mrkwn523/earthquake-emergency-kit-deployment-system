@@ -1,57 +1,99 @@
-<?php include("db_connect.php"); ?>
+<?php
+include("db_connect.php");
+$id = $_GET['id'];
+$result = $conn->query("SELECT * FROM kits WHERE id = $id");
+$row = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Kit</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding-top: 50px;
+        }
+        form {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        form h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background: #555; }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Emergency Kits Dashboard</h1>
-    </header>
-<?php
-$id = $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM kits WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-$stmt->close();
-?>
-    <h2>Edit Emergency Kit</h2>
-    <form method="POST">
-        Kit Name: <input type="text" name="kit_name" value="<?php echo htmlspecialchars($row['kit_name']); ?>" required><br>
-        Contents: <textarea name="contents" required><?php echo htmlspecialchars($row['contents']); ?></textarea><br>
-        Location: <input type="text" name="location" value="<?php echo htmlspecialchars($row['location']); ?>"><br>
-        Status: 
-        <select name="status">
-            <option value="Available" <?php if($row['status']=="Available") echo "selected"; ?>>Available</option>
-            <option value="Deployed" <?php if($row['status']=="Deployed") echo "selected"; ?>>Deployed</option>
-            <option value="Needs Restock" <?php if($row['status']=="Needs Restock") echo "selected"; ?>>Needs Restock</option>
-        </select><br>
-        <input type="submit" name="update" value="Update">
-    </form>
+<form method="POST" action="edit_process.php?id=<?php echo $id; ?>">
+    <h2>Edit Kit</h2>
 
-<?php
-if(isset($_POST['update'])){
-    $kit_name = $_POST['kit_name'];
-    $contents = $_POST['contents'];
-    $location = $_POST['location'];
-    $status   = $_POST['status'];
+    <label for="kit_name">Kit Name</label>
+    <input type="text" name="kit_name" id="kit_name" value="<?php echo $row['kit_name']; ?>" required>
 
-    $stmt = $conn->prepare("UPDATE kits SET kit_name=?, contents=?, location=?, status=? WHERE id=?");
-    $stmt->bind_param("ssssi", $kit_name, $contents, $location, $status, $id);
+    <label for="contents">Contents</label>
+    <textarea name="contents" id="contents" rows="3" required><?php echo $row['contents']; ?></textarea>
 
-    if($stmt->execute()){
-        echo "Kit updated successfully! <a href='index.php'>Back to Dashboard</a>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" value="<?php echo $row['location']; ?>" required>
 
-    $stmt->close();
-}
-?>
+    <label for="status">Status</label>
+    <select name="status" id="status" required>
+        <option value="Available" <?php if($row['status']=="Available") echo "selected"; ?>>Available</option>
+        <option value="Deployed" <?php if($row['status']=="Deployed") echo "selected"; ?>>Deployed</option>
+        <option value="Restock" <?php if($row['status']=="Restock") echo "selected"; ?>>Restock</option>
+    </select>
+
+    <button type="submit">Update Kit</button>
+    <a class="back-link" href="index.php">← Back to Dashboard</a>
+</form>
+
 </body>
 </html>
