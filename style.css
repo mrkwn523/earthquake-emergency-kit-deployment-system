@@ -83,7 +83,7 @@ header a:hover {
 .kit-gallery {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
     margin: 20px 0;
     flex-wrap: wrap;
 }
@@ -92,14 +92,14 @@ header a:hover {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 6px;
-    width: 150px;
+    width: 250px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     text-align: center;
     padding: 10px;
 }
 
 .kit-card img {
-    max-width: 50px !important;
+    max-width: 130px !important;
     height: auto !important;
     display: block;
     margin: 0 auto 6px auto;
@@ -155,7 +155,7 @@ a:hover {
 
 /* Forms */
 .form-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 30px auto;
     background: #fff;
     padding: 25px;
@@ -177,10 +177,11 @@ a:hover {
 }
 
 .form-container input[type="text"],
-.form-container select {
+.form-container select,
+.form-container textarea {
     width: 100%;          /* full width inside container */
-    max-width: 400px;     /* consistent length for both */
-    padding: 10px;
+    max-width: 600px;     /* longer length for textarea */
+    padding: 12px;        /* more padding for taller box */
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -189,6 +190,7 @@ a:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;   /* center align */
+    resize: vertical;     /* allow user to resize height */
 }
 
 .form-container button {
