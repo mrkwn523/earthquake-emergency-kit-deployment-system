@@ -49,23 +49,23 @@
 <!-- Form Section -->
 <div class="form-container">
     <form method="POST" action="add_process.php">
-        <!-- Kit Name via Radio Buttons -->
-        <label>Kit Name</label>
+        <!-- Kit Type via Radio Buttons -->
+        <label>Kit Type</label>
         <div class="radio-group">
-            <label><input type="radio" name="kit_name" value="Family Kit" required> Family Kit</label>
-            <label><input type="radio" name="kit_name" value="First Aid Kit"> First Aid Kit</label>
-            <label><input type="radio" name="kit_name" value="Rescue Kit"> Rescue Kit</label>
+            <label><input type="radio" name="kit_type" value="Family Kit" required> Family Kit</label>
+            <label><input type="radio" name="kit_type" value="First Aid Kit"> First Aid Kit</label>
+            <label><input type="radio" name="kit_type" value="Rescue Kit"> Rescue Kit</label>
         </div>
 
         <!-- Location -->
         <label for="location">Location</label>
-        <input type="text" name="location" id="location" required>
+        <textarea name="location" id="location" rows="3" required></textarea>
+
 
         <!-- Status -->
         <label for="status">Status</label>
         <select name="status" id="status" required>
-            <option value="Available">Available</option>
-            <option value="Deployed">Deployed</option>
+            <option value="Currently Stocked">Currently Stocked</option>
             <option value="Needs Restock">Needs Restock</option>
         </select>
 
