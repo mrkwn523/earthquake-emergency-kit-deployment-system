@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
         form.addEventListener("submit", function (event) {
-            // Kit Name (radio buttons)
-            let kitNameSelected = form.querySelector("input[name='kit_name']:checked");
-            if (!kitNameSelected) {
-                alert("Please select a Kit Name.");
+            // Kit Type (radio buttons)
+            let kitTypeSelected = form.querySelector("input[name='kit_type']:checked");
+            if (!kitTypeSelected) {
+                alert("Please select a Kit Type.");
                 event.preventDefault();
                 return false;
             }
