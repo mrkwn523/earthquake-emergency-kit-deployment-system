@@ -22,7 +22,7 @@
 <thead>
 <tr>
     <th>ID</th>
-    <th>Name</th>
+    <th>Kit Type</th>
     <th>Location</th>
     <th>Status</th>
     <th>Actions</th>
@@ -46,12 +46,12 @@ $result = $conn->query("SELECT * FROM kits ORDER BY id ASC LIMIT $limit OFFSET $
 while($row = $result->fetch_assoc()) {
     echo "<tr>
         <td>{$row['id']}</td>
-        <td>{$row['kit_name']}</td>
+        <td>{$row['kit_type']}</td>
         <td>{$row['location']}</td>
         <td>{$row['status']}</td>
         <td>
-            <a href='edit.php?id={$row['id']}'>Edit</a> |
-            <a href='delete.php?id={$row['id']}' onclick='return confirmDelete()'>Delete</a>
+           <a href='edit.php?id={$row['id']}&page=$page'>Edit</a> |
+           <a href='delete.php?id={$row['id']}&page=$page' onclick='return confirmDelete()'>Delete</a>
         </td>
     </tr>";
 }
