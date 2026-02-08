@@ -3,19 +3,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
         form.addEventListener("submit", function (event) {
-            let kitName = form.querySelector("[name='kit_name']");
-            let contents = form.querySelector("[name='contents']");
-
-            if (!kitName.value.trim()) {
-                alert("Kit Name is required.");
-                kitName.focus();
+            // Kit Name (radio buttons)
+            let kitNameSelected = form.querySelector("input[name='kit_name']:checked");
+            if (!kitNameSelected) {
+                alert("Please select a Kit Name.");
                 event.preventDefault();
                 return false;
             }
 
-            if (!contents.value.trim()) {
-                alert("Contents field cannot be empty.");
-                contents.focus();
+            // Location (text input)
+            let locationInput = form.querySelector("[name='location']");
+            if (!locationInput.value.trim()) {
+                alert("Location is required.");
+                locationInput.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // Status (dropdown)
+            let statusSelect = form.querySelector("[name='status']");
+            if (!statusSelect.value.trim()) {
+                alert("Please select a Status.");
+                statusSelect.focus();
                 event.preventDefault();
                 return false;
             }
