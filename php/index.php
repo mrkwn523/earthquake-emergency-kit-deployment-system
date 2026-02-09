@@ -19,7 +19,7 @@
     <a href="add.php">+ Add New Kit</a>
 </header>
 
-<!-- Table showing all kits -->
+<!-- Table showing all data kits -->
 <table>
 <thead>
 <tr>
@@ -33,7 +33,7 @@
 
 <tbody>
 <?php
-// Pagination setup
+// Pagination
 $limit = 10; 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if($page < 1) $page = 1;
