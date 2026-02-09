@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $location = $_POST['location'];
     $status   = $_POST['status'];
 
-    // Update database with new kit_type, location, and status
+    // Update database
     $stmt = $conn->prepare("UPDATE kits SET kit_type=?, location=?, status=? WHERE id=?");
     $stmt->bind_param("sssi", $kit_type, $location, $status, $id);
 
