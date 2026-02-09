@@ -1,0 +1,18 @@
+<?php
+include("db_connect.php");
+
+if (isset($_GET['id'])) {
+    $id = (int)$_GET['id']; 
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    $conn->query("DELETE FROM kits WHERE id = $id");
+
+    // Redirect back to the same page after deletion
+    header("Location: index.php?page=$page&deleted=1");
+    exit();
+}
+
+// If no ID provided, just go back to dashboard
+header("Location: index.php");
+exit();
+?>
