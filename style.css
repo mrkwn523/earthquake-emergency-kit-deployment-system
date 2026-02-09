@@ -49,7 +49,7 @@ header a:hover {
     color: #fff;
 }
 
-
+/*pagination design*/
 .pagination {
     margin-top: 15px;
     text-align: center;
@@ -78,7 +78,7 @@ header a:hover {
     border: 1px solid #333;
 }
 
-
+/*kits design*/
 .kit-gallery {
     display: flex;
     justify-content: center;
@@ -118,7 +118,7 @@ header a:hover {
     font-size: 0.8em;
 }
 
-
+/*table design*/
 table {
     width: 100%;
     border-collapse: collapse;
@@ -152,7 +152,7 @@ a:hover {
     text-decoration: underline;
 }
 
-
+/*form design*/
 .form-container {
     max-width: 800px;
     margin: 30px auto;
@@ -207,7 +207,7 @@ a:hover {
 .form-container button:hover {
     background: #8b1a1a;
 }
-
+/*back button*/
 .back-link {
     display: block;
     text-align: center;
@@ -241,14 +241,14 @@ a:hover {
 }
 
 
-
+/*radio buttons*/
 .radio-group {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     gap: 40px;       
 }
-
+/*button labels*/
 .radio-group label {
     font-weight: 500;
     cursor: pointer;
