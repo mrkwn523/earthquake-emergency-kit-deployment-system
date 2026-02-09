@@ -1,4 +1,3 @@
-/* Global */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     margin: 20px;
@@ -11,10 +10,10 @@ h1, h2 {
     margin-bottom: 15px;
 }
 
-/* Header */
+
 header {
-    background: #b22222;   /* red banner */
-    color: #fff;           /* default text color inside header */
+    background: #b22222;  
+    color: #fff;           
     padding: 20px;
     min-height: 60px;
     border-radius: 6px;
@@ -30,7 +29,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 1.8em;
-    color: #fff;           /* force white text for visibility */
+    color: #fff;       
 }
 
 header a {
@@ -50,7 +49,7 @@ header a:hover {
     color: #fff;
 }
 
-/* Pagination */
+
 .pagination {
     margin-top: 15px;
     text-align: center;
@@ -79,7 +78,7 @@ header a:hover {
     border: 1px solid #333;
 }
 
-/* Kit Gallery (only for Add/Edit pages) */
+
 .kit-gallery {
     display: flex;
     justify-content: center;
@@ -119,7 +118,7 @@ header a:hover {
     font-size: 0.8em;
 }
 
-/* Table */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -143,7 +142,7 @@ tr:hover {
     background: #f9f9f9;
 }
 
-/* Links */
+
 a {
     text-decoration: none;
     color: #0066cc;
@@ -153,7 +152,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Forms */
+
 .form-container {
     max-width: 800px;
     margin: 30px auto;
@@ -179,9 +178,9 @@ a:hover {
 .form-container input[type="text"],
 .form-container select,
 .form-container textarea {
-    width: 100%;          /* full width inside container */
-    max-width: 600px;     /* longer length for textarea */
-    padding: 12px;        /* more padding for taller box */
+    width: 100%;         
+    max-width: 600px;  
+    padding: 12px;      
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -189,8 +188,8 @@ a:hover {
     background: #fff;
     display: block;
     margin-left: auto;
-    margin-right: auto;   /* center align */
-    resize: vertical;     /* allow user to resize height */
+    margin-right: auto;   
+    resize: vertical; 
 }
 
 .form-container button {
@@ -221,7 +220,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Action buttons */
+
 .actions a {
     display: inline-block;
     padding: 4px 8px;
@@ -242,12 +241,12 @@ a:hover {
 }
 
 
-/* Radio Buttons aligned horizontally */
+
 .radio-group {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    gap: 40px;            /* spacing between options */
+    gap: 40px;       
 }
 
 .radio-group label {
@@ -256,7 +255,7 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 6px;
-    white-space: nowrap;  /* prevent text wrapping */
+    white-space: nowrap;  
 }
 
 .radio-group input[type="radio"] {
