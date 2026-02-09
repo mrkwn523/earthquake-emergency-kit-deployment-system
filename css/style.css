@@ -1,4 +1,8 @@
-/* Global */
+/* ================= GLOBAL ================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     margin: 20px;
@@ -10,33 +14,38 @@ h1, h2 {
     color: #b22222;
     margin-bottom: 15px;
 }
-
-/* Header */
+/* ================= HEADER ================= */
 header {
-    background: #b22222;   
-    color: #fff;           
-    padding: 20px;
-    min-height: 60px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #b22222;
+    padding: 20px 30px;
+    width: 100%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1000;
 }
 
+.header-inner {
+    display: flex;
+    justify-content: space-between; /* pushes buttons to the right */
+    align-items: center;
+}
+
+/* Header title */
 header h1 {
     margin: 0;
     font-size: 1.8em;
-    color: #fff;           
+    color: #fff;
 }
 
+/* Button container */
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Header buttons */
 header a {
     background: #fff;
     color: #b22222;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
@@ -50,110 +59,8 @@ header a:hover {
     color: #fff;
 }
 
-/* Pagination */
-.pagination {
-    margin-top: 15px;
-    text-align: center;
-}
 
-.pagination a, .pagination span {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-right: 5px;
-    border-radius: 4px;
-    text-decoration: none;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
-    color: #333;
-    transition: 0.3s;
-}
-
-.pagination a:hover {
-    background: #333;
-    color: #fff;
-}
-
-.pagination .current {
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-}
-
-/* Kit Gallery (only used in Add/Edit pages) */
-.kit-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-}
-
-.kit-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    width: 250px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: center;
-    padding: 10px;
-}
-
-.kit-card img {
-    max-width: 130px !important;
-    height: auto !important;
-    display: block;
-    margin: 0 auto 6px auto;
-    border-radius: 4px;
-}
-
-.kit-card h3 {
-    color: #b22222;
-    margin-bottom: 6px;
-    font-size: 0.95em;
-}
-
-.kit-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.8em;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background: #f0f0f0;
-    text-transform: uppercase;
-}
-
-tr:hover {
-    background: #f9f9f9;
-}
-
-/* Links */
-a {
-    text-decoration: none;
-    color: #0066cc;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Forms */
+/* ================= FORM CONTAINER ================= */
 .form-container {
     max-width: 800px;
     margin: 30px auto;
@@ -161,13 +68,13 @@ a:hover {
     padding: 25px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 .form-container h2 {
     margin-bottom: 20px;
     font-size: 1.4em;
     color: #b22222;
-    text-align: center;
 }
 
 .form-container label {
@@ -176,12 +83,14 @@ a:hover {
     font-weight: 500;
 }
 
+/* INPUTS (FIXED PASSWORD ISSUE) */
 .form-container input[type="text"],
+.form-container input[type="password"],
 .form-container select,
 .form-container textarea {
-    width: 100%;          
-    max-width: 600px;     
-    padding: 12px;       
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -189,8 +98,8 @@ a:hover {
     background: #fff;
     display: block;
     margin-left: auto;
-    margin-right: auto;   
-    resize: none;     
+    margin-right: auto;
+    resize: none;
 }
 
 .form-container button {
@@ -221,7 +130,36 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Action buttons */
+/* ================= TABLE ================= */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 0 auto;
+}
+
+.form-container table {
+    width: auto;
+    margin: 0 auto 20px;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #f0f0f0;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background: #f9f9f9;
+}
+
+/* ================= ACTION BUTTONS ================= */
 .actions a {
     display: inline-block;
     padding: 4px 8px;
@@ -241,12 +179,83 @@ a:hover {
     color: #fff;
 }
 
-/* Radio Buttons */
+/* ================= PAGINATION ================= */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 5px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    color: #333;
+    transition: 0.3s;
+}
+
+.pagination a:hover {
+    background: #333;
+    color: #fff;
+}
+
+.pagination .current {
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+/* ================= KIT GALLERY ================= */
+.kit-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.kit-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 10px;
+}
+
+.kit-card img {
+    max-width: 130px;
+    height: auto;
+    display: block;
+    margin: 0 auto 6px;
+    border-radius: 4px;
+}
+
+.kit-card h3 {
+    color: #b22222;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+}
+
+.kit-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8em;
+}
+
+/* ================= RADIO BUTTONS ================= */
 .radio-group {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    gap: 40px;           
+    gap: 40px;
 }
 
 .radio-group label {
@@ -255,9 +264,19 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 6px;
-    white-space: nowrap;  
+    white-space: nowrap;
 }
 
 .radio-group input[type="radio"] {
-    transform: scale(1.2); 
+    transform: scale(1.2);
+}
+
+/* ================= LINKS ================= */
+a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+a:hover {
+    text-decoration: underline;
 }
